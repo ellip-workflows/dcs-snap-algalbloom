@@ -225,6 +225,7 @@ ruamel_yaml=0.11.14=py27_1
 scandir=1.4=py27_0
 scikit-image=0.12.3=np111py27_1
 scipy=0.18.1=np111py27_1
+sen2cor=2.3.0=py27_0
 setuptools=27.2.0=py27_0
 simplegeneric=0.8.1=py27_1
 singledispatch=3.4.0.3=py27_0
