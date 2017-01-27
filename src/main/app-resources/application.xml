@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application id="beam_arithm">
+<application id="snap_arithm">
   <jobTemplates>
   
-    <!-- BEAM BandMaths operator job template  -->
+    <!-- SNAP BandMaths operator job template  -->
     <jobTemplate id="expression">
       <streamingExecutable>/application/expression/run</streamingExecutable>
       <defaultParameters>						
@@ -34,7 +34,7 @@
       </defaultJobconf>
     </jobTemplate> 
 		
-    <!-- BEAM Level 3 processor job template  -->
+    <!-- SNAP Level 3 processor job template  -->
     <jobTemplate id="binning">
       <streamingExecutable>/application/binning/run</streamingExecutable>
       <defaultParameters>						
@@ -69,12 +69,12 @@ sample8=101.80430145795337</parameter>
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-  <workflow id="beam_arithm" title="BEAM Algal bloom detection" abstract="This tutorial uses BEAM to detect algal blooms">						
+  <workflow id="snap_arithm" title="SNAP Algal bloom detection" abstract="This tutorial uses SNAP to detect algal blooms">						
     <workflowVersion>1.0</workflowVersion>
     <node id="node_expression">				
       <job id="expression"></job>			
       <sources>
-        <source refid="cas:series">https://data2.terradue.com/eop/eo-samples/series/mer_rr__1p/description</source>
+        <source refid="cas:series">https://catalog.terradue.com/eo-samples/series/mer_rr__1p/description</source>
       </sources>
       <parameters/>					
     </node>

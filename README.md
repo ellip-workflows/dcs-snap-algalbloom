@@ -1,12 +1,12 @@
-## Developer Cloud Service - MERIS Algal bloom detection using BEAM
+## Developer Cloud Service - MERIS Algal bloom detection using SNAP
 
-This tutorial builds upon the on the work done in the context of the ESA Cat-1 project “Production of global MERIS MCI composite images for detection of plankton blooms and other events” submitted by Dr. Jim Gower. More context information is available from the [tutorial wiki page](https://github.com/Terradue/dcs-beam-algalbloom/wiki).
+This tutorial builds upon the on the work done in the context of the ESA Cat-1 project “Production of global MERIS MCI composite images for detection of plankton blooms and other events” submitted by Dr. Jim Gower.
 
-Hereafter, we will guide you to implement a "MERIS Algal bloom detection using BEAM" application on Terradue's Cloud Platform, a set of Cloud services to develop, test and exploit scalable, distributed earth data processors. 
+Hereafter, we will guide you to implement a "MERIS Algal bloom detection using SNAP" application on Terradue's Cloud Platform, a set of Cloud services to develop, test and exploit scalable, distributed earth data processors. 
 
 ### Getting Started 
 
-To run this application, you will need a Developer Cloud Sandbox that can be requested from [Terradue's Portal](http://www.terradue.com/partners), provided user registration approval. 
+To run this application, you will need a Developer Cloud Sandbox that can be requested from [Terradue's Portal](http://www.terradue.com/), provided user registration approval. 
 
 ### Installation 
 
@@ -44,7 +44,8 @@ Select java 1.7 out of the menu options by typing the correct number (here it's 
 Run these commands in the Developer Cloud Sandbox shell:
 
 ```bash
-sudo yum install -y miniconda-3.8.3
+sudo yum install -y snap
+sudo yum install -y miniconda
 export PATH=/opt/anaconda/bin/:$PATH
 sudo conda install -y -c r r-essentials
 sudo conda install -y -c r -c terradue r-rciop
@@ -55,8 +56,8 @@ sudo conda install -y -c r -c terradue r-ff
 
 ```bash
 cd
-git clone git@github.com:Terradue/dcs-beam-algalbloom.git
-cd dcs-beam-algalbloom
+git clone git@github.com:ellip-workflows/dcs-snap-algalbloom.git
+cd dcs-snap-algalbloom
 mvn install
 ```
 
@@ -76,8 +77,7 @@ To learn more and find information go to
 
 * [Developer Cloud Sandbox](http://docs.terradue.com/developer) service 
 * [Envisat MERIS](https://earth.esa.int/web/guest/missions/esa-operational-eo-missions/envisat/instruments/meris)
-* [ESA BEAM](https://earth.esa.int/web/guest/software-tools)
-* [ESA BEAM repository](https://github.com/bcdev/beam)
+* [ESA Sentinel Application Platform](http://step.esa.int/main/toolboxes/snap/)
 
 ### Authors (alphabetically)
 
@@ -86,6 +86,6 @@ To learn more and find information go to
 
 ### License
 
-Copyright 2014 Terradue Srl
+Copyright 2017 Terradue Srl
 
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0

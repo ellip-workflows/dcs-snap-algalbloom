@@ -26,7 +26,7 @@ function createImage() {
 
   band=3 # max. Change this if the algorithm is not MIN_MAX
 
-  ${_CIOP_APPLICATION_PATH}/shared/bin/pconvert.sh \
+  /opt/snap/bin/pconvert \
     -f ${format} \
     -b ${band} ${TMPDIR}/${outputname}/${outputname}.dim  \
     -c ${TMPDIR}/palette.cpd  \
@@ -113,13 +113,14 @@ cat > ${file} << EOF
 </graph>
 EOF
 
-  # invoke BEAM gpt with the created graph
+  # invoke SNAP gpt with the created graph
   ciop-log "INFO" "Binning products"
 
-  ${_CIOP_APPLICATION_PATH}/shared/bin/gpt.sh ${file} || return ${ERR_BINNING}
+#  ${_CIOP_APPLICATION_PATH}/shared/bin/gpt.sh ${file} || return ${ERR_BINNING}
+  /opt/snap/bin/gpt ${file} || return ${ERR_BINNING}
 
   ciop-log "INFO" "Compressing and publishing binned DIMAP product"
-  tar -C ${TMPDIR}/${outputname} -czf ${TMPDIR}/${outputname}/${outputname}.tgz ${TMPDIR}/${outputname}/${outputname}.*
+  tar -C ${TMPDIR}/${outputname} -czf ${TMPDIR}/${outputname}/${outputname}.tgz ${outputname}.dim ${outputname}.data 
 
   # stage-out the binned product
   ciop-publish -m ${TMPDIR}/${outputname}/${outputname}.tgz

@@ -1,7 +1,8 @@
 # define the exit codes
+
 SUCCESS=0
 ERR_NOINPUT=1
-ERR_BEAM=2
+ERR_SNAP=2
 ERR_NOPARAMS=5
 
 # add a trap to exit gracefully
@@ -12,7 +13,7 @@ function cleanExit ()
    case "${retval}" in
      ${SUCCESS})      msg="Processing successfully concluded";;
      ${ERR_NOPARAMS}) msg="Expression not defined";;
-     ${ERR_BEAM})    msg="Beam failed to process product ${product} (Java returned ${res}).";;
+     ${ERR_SNAP})    msg="SNAP failed to process product ${product} (Java returned ${res}).";;
      *)             msg="Unknown error";;
    esac
    [ "${retval}" != "0" ] && ciop-log "ERROR" "Error ${retval} - ${msg}, processing aborted" || ciop-log "INFO" "${msg}"
@@ -52,9 +53,9 @@ function main() {
   ciop-log "INFO" "Retrieved $( basename $retrieved ), moving on to expression"
   outputname=$( basename $retrieved )
 
-  BEAM_REQUEST=${TMPDIR}/beam_request.xml
+  SNAP_REQUEST=${TMPDIR}/snap_request.xml
 
-  cat << EOF > ${BEAM_REQUEST}
+  cat << EOF > ${SNAP_REQUEST}
 <?xml version="1.0" encoding="UTF-8"?>
 <graph>
   <version>1.0</version>
@@ -92,7 +93,9 @@ function main() {
 </graph>
 EOF
 
-  ${_CIOP_APPLICATION_PATH}/shared/bin/gpt.sh ${BEAM_REQUEST} || return ${ERR_BEAM}
+
+  export PATH=/opt/snap/bin:$PATH
+  gpt ${SNAP_REQUEST} || return ${ERR_SNAP}
 
   outputname=$( basename $retrieved)
 
