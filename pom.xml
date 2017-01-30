@@ -49,6 +49,7 @@
                   <requires>
                     <require>miniconda</require>
                     <require>snap</require>
+                    <require>java-1.7.0-openjdk</require>
                   </requires>
                 </configuration>
               </execution>
