@@ -52,6 +52,10 @@ function set_env() {
   xmax=$( echo $bbox | cut -d "," -f 3 )
   ymax=$( echo $bbox | cut -d "," -f 4 )
 
+  export SNAP_HOME=/opt/snap
+  export PATH=${SNAP_HOME}/bin:${PATH}
+  export SNAP_VERSION=$( cat ${SNAP_HOME}/VERSION.txt )
+
 }
 
 function main() {

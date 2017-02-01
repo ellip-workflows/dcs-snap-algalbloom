@@ -33,6 +33,9 @@ function set_env() {
   # run a check on the expression value, it can't be empty
   [ -z "${expression}" ] && return ${ERR_NOPARAMS}
 
+  export SNAP_HOME=/opt/snap
+  export PATH=${SNAP_HOME}/bin:${PATH}
+  export SNAP_VERSION=$( cat ${SNAP_HOME}/VERSION.txt )
 }
 
 function main() {
@@ -93,10 +96,6 @@ function main() {
 </graph>
 EOF
 
-
-  export SNAP_HOME=/opt/snap
-  export PATH=${SNAP_HOME}/bin:${PATH}
-  export SNAP_VERSION=$( cat ${SNAP_HOME}/VERSION.txt )
   gpt ${SNAP_REQUEST} || return ${ERR_SNAP}
 
   outputname=$( basename $retrieved)
